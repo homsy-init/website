@@ -10,7 +10,6 @@
 
           gtag('config', 'AW-10938920960');
         </script>
-
         <!-- Event snippet for Book appointment conversion page
         In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
         <script>
@@ -28,7 +27,6 @@
               return false;
             }
         </script>
-
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -86,7 +84,7 @@
                                 <input name="last_name" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Last Name" required>
                             </div>
                             <div class="form-group">
-                                <input name="email_id" type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+"  class="form-control" aria-describedby="emailHelp" placeholder="Email ID" required>
+                                <input name="email_id" type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control" aria-describedby="emailHelp" placeholder="Email ID" required>
                             </div>
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
@@ -238,14 +236,14 @@
                 <h2 class="mb-0 theme-subhead"><img src="assets/img/line.png"/>Free your trapped capital</h2>
                 <h1 class="theme-head theme-head2 mb-5">See how much money you can access</h1>
                 <div>
-                    <form class="w-100 row theme-form eligibility-form" name="submit-to-google-sheets-3" id="eligibility-1" onsubmit="submitForm(this)">
+                    <form class="w-100 row theme-form eligibility-form" id="eligibility-1" onsubmit="submitForm(this)">
                         <div class="form-group col-xl-6">
                             <label for="exampleInputEmail1">Home/Land Address</label>
-                            <input required name="address" id="check-eligibility-address" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter home address"/>
+                            <input required id="check-eligibility-address" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter home address"/>
                         </div>
                         <div class="form-group float-left col-lg-6 col-xl-6">
                             <label for="exampleInputPassword1">City</label>
-                            <select required name="city" id="cars" form="carform" class="form-control" placeholder="select city">
+                            <select required id="check-eligibility-city" form="carform" class="form-control" placeholder="select city">
                                 <option value="	Agra	">	Agra	</option>
                                 <option value="	Ahmedabad	">	Ahmedabad	</option>
                                 <option value="	Bengaluru	">	Bengaluru	</option>
@@ -269,11 +267,11 @@
                         </div>
                         <div class="form-group col-xl-6 col-lg-6">
                             <label for="exampleInputEmail1">Email Address</label>
-                            <input required type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control" name="email" id="check-eligibility-email" aria-describedby="emailHelp" placeholder="Enter Email address"/>
+                            <input required type="text" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control" id="check-eligibility-email" aria-describedby="emailHelp" placeholder="Enter Email address"/>
                         </div>
                         <div class="form-group col-xl-6 col-lg-6">
                             <label for="exampleInputEmail1">Phone Number</label>
-                            <input required type="tel" name="phone" class="form-control" id="check-eligibility-phone-number" aria-describedby="emailHelp" placeholder="Enter Phone Number" oninvalid="this.setCustomValidity('Please Enter 10 digit mobile number')"/>
+                            <input required type="tel" pattern=".{10}" class="form-control" id="check-eligibility-phone-number" aria-describedby="emailHelp" placeholder="Enter Phone Number" oninvalid="this.setCustomValidity('Please Enter 10 digit mobile number')"/>
                         </div>
                         <div class="form-group col-xl-8 col-lg-7">
                             <label for="exampleInputEmail1">Estimated Home Value (in Rupees)</label>
@@ -281,7 +279,7 @@
                                 <span class="input-group-prepend"> <button type="button" class="btn btn-outline-secondary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
                                         <span class="fa fa-minus"></span>
                                     </button> </span>
-                                <input required type="text" name="quant[1]" id="check-eligibility-home-value" class="form-control input-number" value="2500000" min="2500000" max="50000000">
+                                <input required type="text" name="quant[1]" id="check-eligibility-home-value" class="form-control input-number" value="2500000" min="2500000" max="500000000">
                                 <span class="input-group-append"> <button type="button" class="btn btn-number btn-outline-secondary" data-type="plus" data-field="quant[1]">
                                         <span class="fa fa-plus"></span>
                                     </button> </span>
@@ -291,56 +289,66 @@
                             <button type="submit" id="check-eligibility" class="btn theme-btn btn-primary w-100">Check Eligibility</button>
                         </div>
                     </form>
-                    <div class="eligibility-form theme-form w-100 row" id="eligibility-2">
-                        <div class="col-xl-6 col-lg-6 theme-form">
-                            <h2 class="theme-h2">Congratulations!</h2>
-                            <h4 class="theme-h4 text-center mt-4">You can receive up to</h4>
-                            <h1 class="text-center theme-text-color theme-head mb-5"><i class="fa fa-inr"></i><span id="e_amt"></span></h1>
-                            <form class="w-100">
-                                <div class="form-group col-xl-12">
-                                    <label for="exampleInputEmail1" class="mb-5">Select Loan Amount (in Lakhs)</label>
-                                    <input type="range" id="check-eligibility-loan-amount" class="custom-range" min="0" max="5" step="0.5" id="amt-range" value="0">
-                                    <span class="range-value" id="amt-range-val">0</span>
+                    <form class="eligibility-form theme-form w-100 row" id="eligibility-2" name="submit-to-google-sheet-3" method="POST" action="https://script.google.com/macros/s/AKfycbw9nJ7XV-tj_ZtYGyF1xJY0UmrorToW0-GHI-hYckKJOBy9kggmRc3ix_rSadik_TPR/exec">
+                        <input type="hidden" name="home_address">
+                        <input type="hidden" name="city">
+                        <input type="hidden" name="Email">
+                        <input type="hidden" name="Phone">
+                        <input type="hidden" name="home_value">
+
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 theme-form">
+                                <h2 class="theme-h2">Congratulations!</h2>
+                                <h4 class="theme-h4 text-center mt-4">You can receive up to</h4>
+                                <h1 class="text-center theme-text-color theme-head mb-5"><i class="fa fa-inr"></i><span id="e_amt"></span></h1>
+                                <div class="w-100">
+                                    <div class="form-group col-xl-12">
+                                        <label for="exampleInputEmail1" class="mb-5">Select Loan Amount (in Lakhs)</label>
+                                        <input name="loan_amount" type="range" class="custom-range" min="0" max="5" step="0.5" id="amt-range" value="0">
+                                        <span class="range-value" id="amt-range-val">0</span>
+                                    </div>
+                                    <div class="form-group col-xl-12">
+                                        <label for="exampleInputEmail1" class="mb-5">Select Tenure (in Years)</label>
+                                        <input name="tenure" type="range" class="custom-range" min="0" max="10" step="1" id="ten-range" value="1">
+                                        <span class="range-value" id="ten-range-val">0</span>
+                                    </div>
                                 </div>
-                                <div class="form-group col-xl-12">
-                                    <label for="exampleInputEmail1" class="mb-5">Select Tenure (in Years)</label>
-                                    <input type="range" id="check-eligibility-tenure" class="custom-range" min="0" max="10" step="1" id="ten-range" value="1">
-                                    <span class="range-value" id="ten-range-val">0</span>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="col-xl-6 theme-form" style="border-right: 0 solid;">
+                                <h2 class="theme-h4 text-center">Payback</h2>
+                                <h4 class="theme-h4 text-center mt-4">After <span id="tenure"></span> Years</h4>
+                                <h1 class="text-center theme-text-color theme-head mb-5"><i class="fa fa-inr"></i> <span id="payback_amt"></span></h1>
+                                <ul class="el-list mb-5">
+                                    <li>Appreciation Rate(per annum)
+                                        <span class="theme-text-color"> 
+                                            <select name="appreciation_rate" id="appreciation" onchange="getUpdatedValue()">
+                                                <option value="1">  1%	</option>
+                                                <option value="2">	2%	</option>
+                                                <option value="3">	3%	</option>
+                                                <option value="4">	4%	</option>
+                                                <option value="5">	5%	</option>
+                                                <option value="6">	6%	</option>
+                                                <option value="7">	7%	</option>
+                                                <option value="8">	8%	</option>
+                                                <option value="9">	9%	</option>
+                                                <option value="10">	10%	</option>
+                                            </select> 
+                                        </span>
+                                    </li>
+                                    <li>Final Home Value
+                                        <span><i class="fa fa-inr"></i> <span id="finalHomeValue"></span></span>
+                                    </li>
+                                    <li>Your Share
+                                        <span><i class="fa fa-inr"></i> <span id="ownerShare"></span> </span>
+                                    </li>
+                                    <li>Homsy Share
+                                        <span><i class="fa fa-inr"></i> <span id="homsyShare"></span></span>
+                                    </li>
+                                </ul>
+                                <button type="submit" id="apply-for-funds" class="btn theme-btn btn-primary w-100">Apply for funds</button>
+                            </div>
                         </div>
-                        <div class="col-xl-6 theme-form" style="border-right: 0 solid;">
-                            <h2 class="theme-h4 text-center">Payback</h2>
-                            <h4 class="theme-h4 text-center mt-4">After <span id="tenure"></span> Years</h4>
-                            <h1 class="text-center theme-text-color theme-head mb-5"><i class="fa fa-inr"></i> <span id="payback_amt"></span></h1>
-                            <ul class="el-list mb-5">
-                                <li>Appreciation Rate(per annum)
-                                    <span class="theme-text-color"> <select name="appreciation" id="appreciation" onchange="getUpdatedValue()">
-                                            <option value="1">  1%	</option>
-                                            <option value="2">	2%	</option>
-                                            <option value="3">	3%	</option>
-                                            <option value="4">	4%	</option>
-                                            <option value="5">	5%	</option>
-                                            <option value="6">	6%	</option>
-                                            <option value="7">	7%	</option>
-                                            <option value="8">	8%	</option>
-                                            <option value="9">	9%	</option>
-                                            <option value="10">	10%	</option>
-                                        </select> </span>
-                                </li>
-                                <li>Final Home Value
-                                    <span><i class="fa fa-inr"></i> <span id="finalHomeValue"></span></span>
-                                </li>
-                                <li>Your Share
-                                    <span><i class="fa fa-inr"></i> <span id="ownerShare"></span> </span>
-                                </li>
-                                <li>Homsy Share
-                                    <span><i class="fa fa-inr"></i> <span id="homsyShare"></span></span>
-                                </li>
-                            </ul>
-                            <button type="submit" id="apply-for-funds" class="btn theme-btn btn-primary w-100" onclick="ApplyFunds()">Apply for funds</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- About Section Button-->
             </div>
@@ -746,7 +754,7 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">+91</div>
                                             </div>
-                                            <input type="tel" name="phone_number" pattern=".{10}"  class="form-control" aria-describedby="emailHelp" placeholder="Phone Number" required>
+                                            <input type="tel" name="phone_number" pattern=".{10}" class="form-control" aria-describedby="emailHelp" placeholder="Phone Number" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="text" name="city_of_property" class="form-control" aria-describedby="emailHelp" placeholder="City of Property" required>
@@ -882,11 +890,11 @@
                 }
 
                 slider.oninput = function() {
-                    slider_max = slider.getAttribute("max")
-                    output.innerHTML = this.value + 'L';
-                    output.style.left = (this.value/slider_max)*100 + '%';
-                    appreciation_rate = getAppreciationRate();
-                    CalHomeVal(this.value * 100000,slider2.value,slider_max,appreciation_rate);
+                slider_max = slider.getAttribute("max")
+                output.innerHTML = this.value + 'L';
+                output.style.left = (this.value/slider_max)*100 + '%';
+                appreciation_rate = getAppreciationRate();
+                CalHomeVal(this.value * 100000,slider2.value,slider_max,appreciation_rate);
                 }
 
                 var slider2 = document.getElementById("ten-range");
@@ -902,19 +910,18 @@
                 }
 
                 function submitForm(that) {
-                    for (let i = 0; i < 5; i++) {
-                        formDetails.push(that[i])
-                    }
                     var e_amt = (that[4].value)/2.5;
                     var max_amt = e_amt/100000;
                     e_amt = e_amt.toLocaleString('en-IN');
                     document.getElementById("e_amt").innerHTML = ' ' + e_amt;
                     slider.setAttribute("max",max_amt)
+                    document.getElementsByName("home_address")[0].value = that[0].value;
+                    document.getElementsByName("city")[0].value = document.getElementById("check-eligibility-city").value;
+                    document.getElementsByName("Email")[0].value = that[1].value;
+                    document.getElementsByName("Phone")[0].value = that[2].value
+                    document.getElementsByName("home_value")[0].value = that[4].value;
                 }
 
-                function ApplyFunds() {
-                    console.log(formDetails);
-                }
 
                 CalHomeVal = function(val,ten,max,rate) {
                     var homeValue = (max * 2.5) * 100000;
@@ -945,48 +952,10 @@
                     document.getElementById("tenure").innerHTML = tenure;
                 }
 
-                success = function() {
-                                $('.success-box2').css('display', 'block');
-                                setTimeout( function() { 
-                                    $('.success-box2').css('display', 'none');
-                                }, 4000);
-                }
-                
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbxIkmVub4bZAnlrkFqLhnz2W54c1XePsmHZElxdc09FUiYJCtYmSzXgKZFXOwSZ6Bfq-g/exec'
-                const form = document.forms['submit-to-google-sheet-3']
-
-
-                form.addEventListener('submit', e => {
-                    e.preventDefault()
-                    var obj = new FormData(form)
-                    obj.append("home_address",document.getElementById("check-eligibility-address"));
-                    obj.append("city",document.getElementById("cars"));
-                    obj.append("email_address",document.getElementById("check-eligibility-email"));
-                    obj.append("phone_number",document.getElementById("check-eligibility-phone-number"));
-                    obj.append("home_value",document.getElementById("check-eligibility-home-value"));
-                    obj.append("loan_amount",document.getElementById("check-eligibility-loan-amount"));
-                    obj.append("tenure",document.getElementById("check-eligibility-tenure"));
-                    obj.append("appreciation_rate",document.getElementById("appreciation"));
-                    
-                    fetch(scriptURL, { method: 'POST', body: obj})
-                    .then(response => console.log('Success!', response.json()), 
-                            success()
-                        )
-                    .catch(error => console.error('Error!', error.message))
-                    e.target.reset();
-                })   
         </script>
-
-
         <script>
             success = function() {
-                                // $('.success-box').css('display', 'block');
-                                // setTimeout( function() { 
-                                //     $('.success-box').css('display', 'none');
-                                // }, 4000);
-                                // alert("ok");
-                                // console.log("hello");
-                                window.location.replace("http://www.homsy.in/thankyou.html");
+                        window.location.replace("http://www.homsy.in/thankyou.html");
                 }
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbzHu8nwrPVWdU9qLC2by31P2lR5zs1ocnSjCa93FE06OVn75wXlogheFY1S0xUV7JOI/exec'
                 const form = document.forms['submit-to-google-sheet']
@@ -996,8 +965,7 @@
                     e.preventDefault()
                     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                     .then(response => console.log('Success!', response),
-                            console.log("please")
-                            success()    
+                            window.location.replace("http://www.homsy.in/thankyou.html") 
                         )
                     .catch(error => console.error('Error!', error.message))
                     e.target.reset();
@@ -1026,30 +994,25 @@
                 })
 
         </script>
-         <script>
-            success = function() {
-                                $('.success-box2').css('display', 'block');
-                                setTimeout( function() { 
-                                    $('.success-box2').css('display', 'none');
-                                }, 4000);
-                    }
-                const scriptURL2 = 'https://script.google.com/macros/s/AKfycbxIkmVub4bZAnlrkFqLhnz2W54c1XePsmHZElxdc09FUiYJCtYmSzXgKZFXOwSZ6Bfq-g/exec'
-                const form2 = document.forms['submit-to-google-sheet-3']
+       <script>
+           success = function() {
+                        window.location.replace("http://www.homsy.in/thankyou.html");
+                }
+                
+                const scriptURL3 = 'https://script.google.com/macros/s/AKfycbw9nJ7XV-tj_ZtYGyF1xJY0UmrorToW0-GHI-hYckKJOBy9kggmRc3ix_rSadik_TPR/exec'
+                const form3 = document.forms['submit-to-google-sheet-3']
 
 
-                form2.addEventListener('submit', e => {
+                form3.addEventListener('submit', e => {
                     e.preventDefault()
-                    fetch(scriptURL2, { method: 'POST', body: new FormData(form2)})
-                    .then(response => console.log('Success!', response.json()), 
-                            success()
+                    
+                    fetch(scriptURL3, { method: 'POST', body: new FormData(form3)})
+                    .then(response => console.log('Success!', response.json()),  
+                            window.location.replace("http://www.homsy.in/thankyou.html")
                         )
                     .catch(error => console.error('Error!', error.message))
                     e.target.reset();
-                })
-
-        </script>
-
-
-
+                })   
+       </script>
     </body>
 </html>
