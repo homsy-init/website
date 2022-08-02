@@ -988,7 +988,7 @@
                 form2.addEventListener('submit', e => {
                     e.preventDefault()
                     fetch(scriptURL2, { method: 'POST', body: new FormData(form2)})
-                    .then(response => console.log('Success!', response.json()), 
+                    .then(response => console.log('Success!', response), 
                             success()
                         )
                     .catch(error => console.error('Error!', error.message))
@@ -1009,7 +1009,7 @@
                     e.preventDefault()
                     
                     fetch(scriptURL3, { method: 'POST', body: new FormData(form3)})
-                    .then(response => console.log('Success!', response.json()),  
+                    .then(response => console.log('Success!', response),  
                                 setTimeout( function() { 
                                     window.location.replace("http://www.homsy.in/thankyou.html");
                                 }, 4000)
