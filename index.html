@@ -786,7 +786,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script>
-                                $('.btn-number').click(function(e){
+                    $('.btn-number').click(function(e){
                         e.preventDefault();
                         
                         fieldName = $(this).attr('data-field');
@@ -954,9 +954,6 @@
 
         </script>
         <script>
-            success = function() {
-                        window.location.replace("http://www.homsy.in/thankyou.html");
-                }
                 const scriptURL = 'https://script.google.com/macros/s/AKfycbzHu8nwrPVWdU9qLC2by31P2lR5zs1ocnSjCa93FE06OVn75wXlogheFY1S0xUV7JOI/exec'
                 const form = document.forms['submit-to-google-sheet']
 
@@ -988,7 +985,7 @@
                 form2.addEventListener('submit', e => {
                     e.preventDefault()
                     fetch(scriptURL2, { method: 'POST', body: new FormData(form2)})
-                    .then(response => console.log('Success!', response), 
+                    .then(response => console.log('Success!', response.json()), 
                             success()
                         )
                     .catch(error => console.error('Error!', error.message))
@@ -997,9 +994,6 @@
 
         </script>
        <script>
-           success = function() {
-                        window.location.replace("http://www.homsy.in/thankyou.html");
-                }
                 
                 const scriptURL3 = 'https://script.google.com/macros/s/AKfycbw9nJ7XV-tj_ZtYGyF1xJY0UmrorToW0-GHI-hYckKJOBy9kggmRc3ix_rSadik_TPR/exec'
                 const form3 = document.forms['submit-to-google-sheet-3']
@@ -1009,7 +1003,7 @@
                     e.preventDefault()
                     
                     fetch(scriptURL3, { method: 'POST', body: new FormData(form3)})
-                    .then(response => console.log('Success!', response),  
+                    .then(response => console.log('Success!', response.json()),  
                                 setTimeout( function() { 
                                     window.location.replace("http://www.homsy.in/thankyou.html");
                                 }, 4000)
